@@ -1,3 +1,6 @@
+import { LogOut, SquareUser } from 'lucide-react'
+import Link from 'next/link'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,23 +18,30 @@ export function DashboardUserDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="w-full gap-2 justify-start px-2">
-          <Avatar>
+          <Avatar className="w-7 h-7 block">
             <AvatarImage src="https://github.com/filipebteixeira98.png" />
             <AvatarFallback>FT</AvatarFallback>
           </Avatar>
           <p>Filipe Teixeira</p>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent
+        align="center"
+        className="w-[var(--radix-dropdown-menu-trigger-width)]"
+      >
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuGroup>
+          <Link passHref href="/dashboard/account">
+            <DropdownMenuItem className="gap-2">
+              <SquareUser size={16} />
+              Account Settings
+            </DropdownMenuItem>
+          </Link>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <DropdownMenuItem className="gap-2 text-red-500">
+            <LogOut size={16} />
+            Sign Out
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
