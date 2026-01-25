@@ -1,7 +1,9 @@
-import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Nunito, Nunito_Sans } from 'next/font/google'
 
+import { cn } from '@/lib/utils'
+
+import { ThemeProvider } from '@/components/shared/theme-provider'
 import '@/styles/globals.css'
 
 const fontSans = Nunito_Sans({ subsets: ['latin'], variable: '--font-sans' })
@@ -25,7 +27,14 @@ export default function RootLayout({
           fontSerif.variable
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
