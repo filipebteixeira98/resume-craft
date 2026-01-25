@@ -11,7 +11,11 @@ type FormData = {
 }
 
 export function DashboardNewResumeDialog(props: BaseDialogProps) {
-  const methods = useForm<FormData>()
+  const methods = useForm<FormData>({
+    defaultValues: {
+      title: '',
+    },
+  })
 
   function onSubmit(data: FormData) {
     console.log(data)
